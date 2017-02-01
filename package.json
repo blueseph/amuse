@@ -1,0 +1,25 @@
+{
+  "name": "mise",
+  "version": "0.1.0",
+  "description": "restful framework for creating microservice-friendly resources",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter spec --harmony-async-await",
+    "start": "node --harmony-async-await src/index.js"
+  },
+  "author": "bruce",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "sinon": "^1.17.7"
+  },
+  "dependencies": {
+    "bookshelf": "^0.10.3",
+    "knex": "^0.12.6",
+    "koa": "^2.0.0",
+    "koa-bodyparser": "^3.2.0",
+    "koa-router": "^7.1.0",
+    "mysql": "^2.13.0"
+  }
+}
