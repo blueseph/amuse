@@ -18,7 +18,8 @@ app.resource({ tableName: 'rooms' });
 app.resources.rooms.validate(room => room.id);
 app.resources.rooms.validate(room => room.owner);
 
-app.listen(3000);```
+app.listen(3000);
+```
 
 mise is built on koa@2, so you'll have to use the --harmony-async-await until async/await hits v8 natively.
 
