@@ -6,14 +6,14 @@ const handler = () => {
   const app = new Koa();
   const router = koarouter();
 
-  const setupResources = resources => {
-    for (resource of Object.keys(resources)) {
+  const setupResources = (resources) => {
+    Object.keys(resources).forEach((resource) => {
       router.get(`/${resource}`, resources[resource].middleware.service.fetchAll);
       router.get(`/${resource}/:id`, resources[resource].middleware.service.fetch);
       router.post(`/${resource}`, resources[resource].middleware.validator, resources[resource].middleware.service.create);
       router.put(`/${resource}/:id`, resources[resource].middleware.validator, resources[resource].middleware.service.update);
       router.del(`/${resource}/:id`, resources[resource].middleware.service.remove);
-    }
+    });
   };
 
   const useMiddlewares = () => {
@@ -22,12 +22,12 @@ const handler = () => {
     app.use(router.allowedMethods());
   };
 
-  const init = resources => {
+  const init = (resources) => {
     setupResources(resources);
     useMiddlewares();
   };
 
-  const listen = port => {
+  const listen = (port) => {
     app.listen(port);
   };
 
@@ -35,6 +35,6 @@ const handler = () => {
     init,
     listen,
   };
-}
+};
 
 module.exports = handler;

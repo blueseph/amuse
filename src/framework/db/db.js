@@ -1,12 +1,12 @@
 const Knex = require('knex');
 const Bookshelf = require('bookshelf');
 
-const db = () => {
+const dbHandler = () => {
   let db;
 
-  const connect = options => {
+  const connect = (options) => {
     db = Bookshelf(Knex(options));
-  }
+  };
 
   const resource = options => db.Model.extend(options);
 
@@ -16,7 +16,7 @@ const db = () => {
     connect,
     resource,
     getDb,
-  }
+  };
 };
 
-module.exports = db;
+module.exports = dbHandler;

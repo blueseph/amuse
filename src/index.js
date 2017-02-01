@@ -13,21 +13,21 @@ const mise = () => {
   const resource = (options = { tableName: 'default' }) => {
     resources[options.tableName] = Object.assign({},
       resources,
-      component(db.resource(options))
+      component(db.resource(options)),
     );
   };
 
-  const listen = port => {
+  const listen = (port) => {
     koa.init(resources);
-    koa.listen(3000);
-  }
+    koa.listen(port);
+  };
 
-  return {
+  return Object.freeze({
     resource,
     resources,
     connect,
-    listen
-  };
-}
+    listen,
+  });
+};
 
 module.exports = mise;

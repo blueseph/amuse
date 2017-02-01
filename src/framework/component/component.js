@@ -16,11 +16,11 @@ const component = (db) => {
   };
 
   return Object.assign(
-      {},
-      service,
-      validator,
-      { middleware },
-      { db }
+    {},
+    service,
+    validator,
+    { middleware },
+    { db },
   );
 };
 

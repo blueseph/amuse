@@ -1,3 +1,5 @@
+/*  eslint no-param-reassign: ["error", { "props": false }]*/
+
 const middleware = validator => async (ctx, next) => {
   const result = validator.validate(ctx.request.body);
 

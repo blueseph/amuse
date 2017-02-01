@@ -1,4 +1,4 @@
-/* default controller without any additional configurations. can be overridden */
+/*  eslint no-param-reassign: ["error", { "props": false }]*/
 
 const controller = (service) => {
   const fetchAll = async (ctx) => {
