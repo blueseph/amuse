@@ -4,7 +4,8 @@
   "description": "restful framework for creating microservice-friendly resources",
   "main": "src/index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha --reporter spec --harmony-async-await",
+    "lint": "./node_modules/.bin/eslint src/**/*.js",
+    "test": "./node_modules/.bin/mocha --reporter spec --harmony-async-await --silent",
     "start": "node --harmony-async-await src/index.js"
   },
   "author": "bruce",
