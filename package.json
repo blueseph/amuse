@@ -1,5 +1,5 @@
 {
-  "name": "mise",
+  "name": "amuse",
   "version": "0.1.0",
   "description": "restful framework for creating microservice-friendly resources",
   "main": "src/index.js",

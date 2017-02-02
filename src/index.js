@@ -2,7 +2,7 @@ const dbConn = require('./framework/db/db');
 const component = require('./framework/component/component');
 const koaHandler = require('./framework/koa/koa');
 
-const mise = () => {
+const amuse = () => {
   const resources = {};
 
   const koa = koaHandler();
@@ -30,4 +30,4 @@ const mise = () => {
   });
 };
 
-module.exports = mise;
+module.exports = amuse;
