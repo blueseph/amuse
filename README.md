@@ -2,7 +2,13 @@
 
 a super simple super opinionated nodejs microservice-friendly restful api
 
-here's a sample of how to use amuse
+### npm install
+
+`npm install amuse`
+
+### docs
+
+### examples
 
 ```js
 const amuse = require('amuse');
