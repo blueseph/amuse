@@ -27,6 +27,7 @@ app.resources.rooms.validate(room => room.owner);
 app.listen(3000);
 ```
 
+### notes
 amuse is built on koa@2, so you'll have to use the --harmony-async-await until async/await hits v8 natively.
 
 please don't use this in production yet. thanks a bunch.
