@@ -11,9 +11,10 @@ const amuse = () => {
   const { connect } = db;
 
   const resource = (options = { tableName: 'default' }) => {
-    resources[options.tableName] = Object.assign({},
+    resources[options.tableName] = Object.assign(
+      {},
       resources,
-      component(db.resource(options)),
+      component(db.resource(options)) // eslint-disable-line comma-dangle
     );
   };
 

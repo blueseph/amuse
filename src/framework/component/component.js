@@ -20,7 +20,7 @@ const component = (db) => {
     service,
     validator,
     { middleware },
-    { db },
+    { db } // eslint-disable-line comma-dangle
   );
 };
 
