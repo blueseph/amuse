@@ -8,6 +8,10 @@
     "test": "./node_modules/.bin/mocha --reporter spec --harmony-async-await --silent",
     "start": "node --harmony-async-await src/index.js"
   },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/blueseph/amuse.git"
+  },
   "author": "bruce",
   "license": "MIT",
   "devDependencies": {
