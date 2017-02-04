@@ -10,7 +10,10 @@ const amuse = () => {
 
   const { connect } = db;
 
-  const resource = (options = { tableName: 'default' }) => {
+  const resource = (options = {}) => {
+    if (!options.tableName) {
+      throw new Error('Missing tableName in options');
+    }
     resources[options.tableName] = Object.assign(
       {},
       resources,
