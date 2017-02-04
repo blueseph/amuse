@@ -1,6 +1,6 @@
 {
   "name": "amuse",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "restful framework for creating microservice-friendly resources",
   "main": "src/index.js",
   "scripts": {
@@ -9,8 +9,8 @@
     "start": "node --harmony-async-await src/index.js"
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/blueseph/amuse.git"
+    "type": "git",
+    "url": "https://github.com/blueseph/amuse.git"
   },
   "author": "bruce",
   "license": "MIT",
