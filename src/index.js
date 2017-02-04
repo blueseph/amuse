@@ -9,6 +9,7 @@ const amuse = () => {
   const db = dbConn();
 
   const { connect } = db;
+  const { middlewares } = koa;
 
   const resource = (options = {}) => {
     if (!options.tableName) {
@@ -31,6 +32,7 @@ const amuse = () => {
     resources,
     connect,
     listen,
+    middlewares,
   });
 };
 
