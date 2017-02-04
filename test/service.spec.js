@@ -1,11 +1,14 @@
+/* eslint */
+
+
 const expect = require('chai').expect;
 const sinon = require('sinon');
 
-const Service = require('../framework/service/service');
+const Service = require('../src/framework/component/service/service');
 
 describe('service', function() {
   let service, model;
-  let newingSerivce, newableModel, newedService;
+  let newingService, NewableModel, newedService;
 
   beforeEach(async () => {
     const fetch = sinon.spy();
@@ -13,26 +16,26 @@ describe('service', function() {
     model = {
       fetchAll: sinon.spy(),
       fetch: sinon.spy(),
-      where: sinon.stub().withArgs(1).returns({ fetch: sinon.spy(), }),
+      where: sinon.stub().withArgs(1).returns({ fetch: sinon.spy() }),
       save: sinon.spy(),
       destroy: sinon.spy(),
     };
 
     service = Service(model);
 
-    newableModel = function() {
+    NewableModel = function() {
       return {
         fetchAll: sinon.spy(),
         fetch: sinon.spy(),
-        where: sinon.stub().withArgs(1).returns({ fetch: sinon.spy(), }),
+        where: sinon.stub().withArgs(1).returns({ fetch: sinon.spy() }),
         save: sinon.spy(),
         destroy: sinon.spy(),
       };
-    }
+    };
 
-    newedService = new newableModel();
+    newedService = new NewableModel();
 
-    newingService = Service(newableModel);
+    newingService = Service(NewableModel);
   });
 
   describe('fetchAll', () => {

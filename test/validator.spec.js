@@ -1,6 +1,6 @@
 const expect = require('chai').expect;
 
-const Validator = require('../framework/validator/validator');
+const Validator = require('../src/framework/component/validator/validator');
 
 describe('validator', function() {
   let validator, validates, validate, getValidators;
@@ -111,9 +111,8 @@ describe('validator', function() {
       const result = validate(objectToValidate);
 
       expect(result.success).to.be.false;
-      expect(result.errors.fourth.length).to.equal(2);
-      expect(result.errors.fourth[0].includes('property')).to.be.true;
-      expect(result.errors.fourth[1].includes('pass validation')).to.be.true;
+      expect(result.errors.fourth.length).to.equal(1);
+      expect(result.errors.fourth[0].includes('pass validation')).to.be.true;
     });
   });
 });
