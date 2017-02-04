@@ -9,6 +9,7 @@ const amuse = () => {
   const db = dbConn();
 
   const { connect } = db;
+  const { middlewares } = koa;
 
   const resource = (options = { tableName: 'default' }) => {
     resources[options.tableName] = Object.assign(
@@ -28,6 +29,7 @@ const amuse = () => {
     resources,
     connect,
     listen,
+    middlewares,
   });
 };
 
