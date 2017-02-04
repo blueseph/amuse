@@ -4,6 +4,7 @@
   "description": "restful framework for creating microservice-friendly resources",
   "main": "src/index.js",
   "scripts": {
+    "example": "node --harmony-async-await example/start.js",
     "lint": "./node_modules/.bin/eslint src/**/*.js",
     "test": "./node_modules/.bin/mocha --reporter spec --harmony-async-await --silent",
     "start": "node --harmony-async-await src/index.js"
