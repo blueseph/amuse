@@ -10,13 +10,13 @@ const handler = () => {
   const { add } = middlewares;
 
   const setupResources = (resources) => {
-    const allMiddleware = middlewares.getMiddlewares();
+    const resourceMiddleware = middlewares.getMiddlewares();
     Object.keys(resources).forEach((resource) => {
-      router.get(`/${resource}`, ...allMiddleware, resources[resource].middleware.service.fetchAll);
-      router.get(`/${resource}/:id`, ...allMiddleware, resources[resource].middleware.service.fetch);
-      router.post(`/${resource}`, ...allMiddleware, resources[resource].middleware.validator, resources[resource].middleware.service.create);
-      router.put(`/${resource}/:id`, ...allMiddleware, resources[resource].middleware.validator, resources[resource].middleware.service.update);
-      router.del(`/${resource}/:id`, ...allMiddleware, resources[resource].middleware.service.remove);
+      router.get(`/${resource}`, ...resourceMiddleware, resources[resource].middleware.service.fetchAll);
+      router.get(`/${resource}/:id`, ...resourceMiddleware, resources[resource].middleware.service.fetch);
+      router.post(`/${resource}`, ...resourceMiddleware, resources[resource].middleware.validator, resources[resource].middleware.service.create);
+      router.put(`/${resource}/:id`, ...resourceMiddleware, resources[resource].middleware.validator, resources[resource].middleware.service.update);
+      router.del(`/${resource}/:id`, ...resourceMiddleware, resources[resource].middleware.service.remove);
     });
   };
 
