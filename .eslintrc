@@ -2,7 +2,7 @@
     "extends": "airbnb/base",
     "rules": {
         "linebreak-style": [
-            "error",
+            2,
             "windows",
         ]
     }
