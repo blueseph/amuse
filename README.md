@@ -1,4 +1,5 @@
 #amuse (ah mooz)
+[![Build Status](https://travis-ci.org/blueseph/amuse.svg?branch=master)](https://travis-ci.org/blueseph/amuse)
 
 a super simple super opinionated nodejs microservice-friendly restful api
 
