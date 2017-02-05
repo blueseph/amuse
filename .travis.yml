@@ -3,6 +3,4 @@ sudo: required
 node_js: 7.5
 install: npm install
 script:
-- ls
 - npm run test
-- npm run lint
