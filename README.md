@@ -7,24 +7,53 @@ a super simple super opinionated nodejs microservice-friendly restful api
 
 `npm install amuse`
 
-### docs
-
-### examples
+### example
 
 ```js
 const amuse = require('amuse');
+const loggerMiddleware = require('./logger/logger');
+const roomMiddleware = require('./roomMiddleware/roomMiddleware');
 
 // this is a knex connection
 const conn = require('conn.env');
-
 const app = amuse();
 
 app.connect(conn)
+
+// this is a bookshelf model
 app.resource({ tableName: 'rooms' });
 
-app.resources.rooms.validate(room => room.id);
-app.resources.rooms.validate(room => room.owner);
+//this middleware runs on all requests
+app.middlewares.add(loggerMiddleware);
 
+// these validators happen when creating/updating a model
+app.resources.rooms.validate(room => room.owner);
+app.resources.rooms.validate(room => room.title);
+app.resources.rooms.validate(room => room.description);
+app.resources.rooms.validate(
+  room => room.description.length > 10,
+  'Room description must be at least 10 characters'
+);
+
+// this middleware runs on only requests to room resources
+app.resources.rooms.middlewares.add(roomMiddleware);
+
+/*
+  all of these are automatically created
+
+  GET localhost:3000/rooms/
+    [{ id: 1, description: '...', title: '...'}, { id: 2, description: '...', title: '...'}]
+  GET localhost:3000/rooms/1
+    { id: 1, description: '...', title: '...'}
+  POST localhost:3000/rooms/
+  { description: '...', title: '...' }
+    { id: 3, description: '...', title: '...' }
+  UPDATE localhost:3000/rooms/3
+  { id: 3, description: '---', title: '---'' }
+    { id: 3, description: '---', title: '---' }
+  DELETE localhost:3000/rooms/3
+    {}
+*/
 app.listen(3000);
 ```
 
