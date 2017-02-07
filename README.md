@@ -11,8 +11,8 @@ a super simple super opinionated nodejs microservice-friendly restful api
 
 ```js
 const amuse = require('amuse');
-const loggerMiddleware = require('./logger/logger');
-const roomMiddleware = require('./roomMiddleware/roomMiddleware');
+const loggerMiddleware = require('./middlewares/logger');
+const roomMiddleware = require('./middlewares/room/middleware');
 
 // this is a knex connection
 const conn = require('conn.env');
@@ -27,10 +27,10 @@ app.resource({ tableName: 'rooms' });
 app.middlewares.add(loggerMiddleware);
 
 // these validators happen when creating/updating a model
-app.resources.rooms.validate(room => room.owner);
-app.resources.rooms.validate(room => room.title);
-app.resources.rooms.validate(room => room.description);
-app.resources.rooms.validate(
+app.resources.rooms.validates(room => room.owner);
+app.resources.rooms.validates(room => room.title);
+app.resources.rooms.validates(room => room.description);
+app.resources.rooms.validates(
   room => room.description.length > 10,
   'Room description must be at least 10 characters'
 );
@@ -49,7 +49,7 @@ app.resources.rooms.middlewares.add(roomMiddleware);
   { description: '...', title: '...' }
     { id: 3, description: '...', title: '...' }
   UPDATE localhost:3000/rooms/3
-  { id: 3, description: '---', title: '---'' }
+  { id: 3, description: '---', title: '---' }
     { id: 3, description: '---', title: '---' }
   DELETE localhost:3000/rooms/3
     {}
