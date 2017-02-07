@@ -59,10 +59,11 @@ const unsub = app.middleware.add(loggerMiddleware);
 unsub();
 
 // these validators happen when creating/updating a model
-app.resources.rooms.validates(room => room.owner);
-app.resources.rooms.validates(room => room.title);
-app.resources.rooms.validates(room => room.description);
+app.resources.rooms.validates('owner', room => room.owner);
+app.resources.rooms.validates('title', room => room.title);
+app.resources.rooms.validates('description', room => room.description);
 app.resources.rooms.validates(
+  'description',
   room => room.description.length > 10,
   'Room description must be at least 10 characters'
 );
