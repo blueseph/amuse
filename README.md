@@ -29,7 +29,20 @@ const amuse = require('amuse');
 const loggerMiddleware = require('./middlewares/logger');
 const roomMiddleware = require('./middlewares/room/middleware');
 
+/*
+  const conn = {
+    client: 'mysql',
+    connection: {
+      host: 'host',
+      user: 'user',
+      password: 'password',
+      database: 'database',
+      charset: 'charset',
+    },
+  };
+*/
 const conn = require('conn.env');
+
 const app = amuse();
 
 app.connect(conn);
@@ -53,9 +66,6 @@ app.resources.rooms.validates(
   room => room.description.length > 10,
   'Room description must be at least 10 characters'
 );
-
-// you can also remove validators, if need be
-app.resources.rooms.validates(room => room.description.length < 2);
 
 // this middleware runs on only requests to room resources
 app.resources.rooms.middlewares.add(roomMiddleware);
