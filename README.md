@@ -29,11 +29,14 @@ app.middlewares.add(loggerMiddleware);
 // these validators happen when creating/updating a model
 app.resources.rooms.validates(room => room.owner);
 app.resources.rooms.validates(room => room.title);
-app.resources.rooms.validates(room => room.description);
 app.resources.rooms.validates(
   room => room.description.length > 10,
   'Room description must be at least 10 characters'
 );
+
+// validates returns an unsub function
+const descValidator = app.resources.rooms.validates(room => room.description);
+descValidator();
 
 // this middleware runs on only requests to room resources
 app.resources.rooms.middlewares.add(roomMiddleware);
