@@ -6,7 +6,7 @@
   "scripts": {
     "example": "node --harmony-async-await example/start.js",
     "lint": "./node_modules/.bin/eslint src/**/*.js",
-    "test": "node --harmony node_modules/istanbul/lib/cli cover node_modules\\mocha\\bin/_mocha -- --recursive",
+    "test": "node --harmony node_modules/istanbul/lib/cli cover node_modules/mocha/bin/_mocha -- --recursive",
     "start": "node --harmony-async-await src/index.js"
   },
   "repository": {
