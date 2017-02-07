@@ -9,13 +9,11 @@ const amuse = () => {
   const db = dbConn();
 
   const { connect } = db;
-  const { middlewares } = koa;
 
   const resource = (options = {}) => {
     if (!options.tableName) {
       throw new Error('Missing tableName in options');
     }
-
     resources[options.tableName] = Object.assign(
       {},
       resources,
@@ -33,7 +31,6 @@ const amuse = () => {
     resources,
     connect,
     listen,
-    middlewares,
   });
 };
 
