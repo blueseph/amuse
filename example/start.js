@@ -12,7 +12,7 @@ app.middlewares.add(middleware1);
 
 app.resource({ tableName: 'example' });
 
-app.resources.example.validates(e => e.id);
+app.resources.example.validates('id', e => e.id);
 app.resources.example.middlewares.add(middleware2);
 
 app.listen(3000);
