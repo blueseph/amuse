@@ -1,10 +1,7 @@
-/* eslint */
-
-
 const expect = require('chai').expect;
 const sinon = require('sinon');
 
-const Service = require('../src/framework/component/service/service');
+const Service = require('../../src/framework/component/service/service');
 
 describe('service', function() {
   let service, model;
