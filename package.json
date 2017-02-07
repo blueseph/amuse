@@ -6,7 +6,7 @@
   "scripts": {
     "example": "node --harmony-async-await example/start.js",
     "lint": "./node_modules/.bin/eslint src/**/*.js",
-    "test": "./node_modules/.bin/mocha --harmony-async-await --recursive ",
+    "test": "node --harmony node_modules/istanbul/lib/cli cover node_modules\\mocha\\bin/_mocha -- --recursive",
     "start": "node --harmony-async-await src/index.js"
   },
   "repository": {
@@ -22,6 +22,7 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^3.0.2",
     "eslint-plugin-react": "^6.9.0",
+    "istanbul": "^1.0.0-alpha.2",
     "mocha": "^3.2.0",
     "sinon": "^1.17.7"
   },
