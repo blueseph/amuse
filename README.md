@@ -35,8 +35,8 @@ app.resources.rooms.validates(
 );
 
 // validates returns an unsub function
-const descValidator = app.resources.rooms.validates(room => room.description);
-descValidator();
+const descUnsubscribe = app.resources.rooms.validates(room => room.description);
+descUnsubscribe();
 
 // this middleware runs on only requests to room resources
 app.resources.rooms.middlewares.add(roomMiddleware);
