@@ -1,4 +1,4 @@
-#amuse (ah mooz)
+# amuse (ah mooz)
 [![Build Status](https://travis-ci.org/blueseph/amuse.svg?branch=master)](https://travis-ci.org/blueseph/amuse)
 
 a super simple super opinionated nodejs microservice-friendly restful api
@@ -26,6 +26,8 @@ app.listen(3000);
 ##### detailed with commentary
 ```js
 const amuse = require('amuse');
+
+// these are koa middlewares
 const loggerMiddleware = require('./middlewares/logger');
 const roomMiddleware = require('./middlewares/room/middleware');
 
@@ -81,7 +83,7 @@ app.resources.rooms.middlewares.add(roomMiddleware);
   POST localhost:3000/rooms/
   { description: '...', title: '...' }
     { id: 3, description: '...', title: '...' }
-  UPDATE localhost:3000/rooms/3
+  PUT localhost:3000/rooms/3
   { id: 3, description: '---', title: '---' }
     { id: 3, description: '---', title: '---' }
   DELETE localhost:3000/rooms/3
