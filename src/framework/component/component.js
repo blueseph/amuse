@@ -18,14 +18,13 @@ const component = (db) => {
     validator: validatorMiddleware,
   };
 
-  return Object.assign(
-    {},
-    service,
-    validator,
-    { middlewares: { add } },
-    { middleware },
-    { db } // eslint-disable-line comma-dangle
-  );
+  return {
+    ...service,
+    ...validator,
+    middlewares: { add },
+    middleware,
+    db,
+  };
 };
 
 module.exports = component;
