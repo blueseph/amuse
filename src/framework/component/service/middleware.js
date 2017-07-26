@@ -10,6 +10,7 @@ const controller = (service) => {
     responseObj.addData(results);
 
     ctx.body = responseObj.get();
+    ctx.response.status = 200;
   };
 
   // finding no results for a single resource is a failure, however
@@ -33,7 +34,9 @@ const controller = (service) => {
         const result = await service.create(ctx.request.body);
 
         responseObj.addData(result);
+        ctx.response.status = 200;
       } catch (err) {
+        ctx.response.status = 400;
         responseObj.addError(err.toString());
       }
 
@@ -54,7 +57,9 @@ const controller = (service) => {
         const result = await service.update(ctx.request.body);
 
         responseObj.addData(result);
+        ctx.response.status = 200;
       } catch (err) {
+        ctx.response.status = 400;
         responseObj.addError(err.toString());
       }
 
@@ -70,7 +75,7 @@ const controller = (service) => {
     try {
       const res = await service.remove(ctx.params.id);
       if (res !== null) {
-        ctx.response.status = 202;
+        ctx.response.status = 204;
       } else {
         ctx.response.status = 404;
       }
