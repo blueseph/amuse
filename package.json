@@ -1,6 +1,6 @@
 {
   "name": "amuse",
-  "version": "0.2.6",
+  "version": "1.0.0",
   "description": "restful framework for creating microservice-friendly resources",
   "main": "src/index.js",
   "scripts": {
