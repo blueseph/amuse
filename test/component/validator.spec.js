@@ -1,9 +1,14 @@
-const expect = require('chai').expect;
+const chai = require('chai');
+
+const expect = chai.expect;
 
 const Validator = require('../../src/framework/component/validator/validator');
 
-describe('validator', function() {
-  let validator, validates, validate, getValidators;
+describe('validator', () => {
+  let validator;
+  let validates;
+  let validate;
+  let getValidators;
 
   beforeEach(() => {
     // destructuring doesnt seem to work here.
@@ -37,14 +42,14 @@ describe('validator', function() {
       const validators = getValidators();
       const aValidator = validators.find(({ property }) => property === 'a');
       const bValidator = validators.find(({ property }) => property === 'b');
-      const cValidator = validators.find(({ test }) => ''+test === ''+(obj => obj.c));
+      const cValidator = validators.find(({ test }) => `${test}` === `${obj => obj.c}`);
 
       expect(validators.length).to.equal(3);
       expect(aValidator).to.not.be.undefined;
       expect(bValidator).to.not.be.undefined;
       expect(cValidator).to.not.be.undefined;
     });
-  })
+  });
 
   describe('validates', () => {
     it('should accept a property, a test, and a custom error', () => {
@@ -66,13 +71,17 @@ describe('validator', function() {
       const validators = getValidators();
       expect(validators.length).to.equal(0);
     });
-  })
+  });
 
   describe('validate', () => {
-    let objectToValidate, validateFirst, validateSecond, validateThird, invalidValidate;
+    let objectToValidate,
+      validateFirst,
+      validateSecond,
+      validateThird,
+      invalidValidate;
 
     beforeEach(() => {
-      objectToValidate = { first: true, second: false, third: null, };
+      objectToValidate = { first: true, second: false, third: null };
 
       validateFirst = obj => obj.first;
       validateSecond = obj => !obj.second;
@@ -111,8 +120,8 @@ describe('validator', function() {
       const result = validate(objectToValidate);
 
       expect(result.success).to.be.false;
-      expect(result.errors.fourth.length).to.equal(1);
-      expect(result.errors.fourth[0].includes('pass validation')).to.be.true;
+      expect(result.errors.length).to.equal(1);
+      expect(result.errors[0].fourth[0].includes('pass validation')).to.be.true;
     });
   });
 });

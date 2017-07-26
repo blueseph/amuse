@@ -1,3 +1,5 @@
+const responseObject = require('../response');
+
 const validation = () => {
   let tests = [];
 
@@ -13,21 +15,26 @@ const validation = () => {
   const getValidators = () => tests;
 
   const validate = (obj) => {
-    let validationObject = { success: true, errors: {} };
+    const validationObject = responseObject();
+    let errors = {};
 
     tests.forEach(({ property, test, customErr }) => {
       if (!test(obj)) {
-        validationObject = Object.assign({}, validationObject,
-          {
-            success: false,
-            errors: Object.assign({}, validationObject.errors, {
-              [property]: [...validationObject.errors[property] || [], customErr || `Object did not pass validation for property ${property}`],
-            }),
-          });
+        errors = {
+          ...errors,
+          [property]: [
+            ...errors[property] || [],
+            customErr || `Object did not pass validation for property ${property}`,
+          ],
+        };
       }
     });
 
-    return validationObject;
+    if (Object.keys(errors).length) {
+      validationObject.addError(errors);
+    }
+
+    return validationObject.get();
   };
 
   return {

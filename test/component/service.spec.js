@@ -3,9 +3,12 @@ const sinon = require('sinon');
 
 const Service = require('../../src/framework/component/service/service');
 
-describe('service', function() {
-  let service, model;
-  let newingService, NewableModel, newedService;
+describe('service', () => {
+  let service,
+    model;
+  let newingService,
+    NewableModel,
+    newedService;
 
   beforeEach(async () => {
     const fetch = sinon.spy();
@@ -20,7 +23,7 @@ describe('service', function() {
 
     service = Service(model);
 
-    NewableModel = function() {
+    NewableModel = function () {
       return {
         fetchAll: sinon.spy(),
         fetch: sinon.spy(),
@@ -40,7 +43,7 @@ describe('service', function() {
       expect(service.fetchAll).to.be.function;
     });
 
-    it(`should call the spy's fetchall`, async () => {
+    it('should call the spy\'s fetchall', async () => {
       await service.fetchAll();
 
       expect(model.fetchAll.called).to.be.true;
@@ -52,7 +55,7 @@ describe('service', function() {
       expect(service.fetch).to.be.function;
     });
 
-    it(`should call the spy's fetch`, async () => {
+    it('should call the spy\'s fetch', async () => {
       await service.fetch(1);
 
       expect(model.where.called).to.be.true;
@@ -61,8 +64,8 @@ describe('service', function() {
   });
 
   describe('create', () => {
-    it ('should exist', () => {
+    it('should exist', () => {
       expect(service.create).to.be.function;
     });
-  })
+  });
 });
