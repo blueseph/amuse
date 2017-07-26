@@ -1,11 +1,15 @@
 # amuse (ah mooz)
 [![Build Status](https://travis-ci.org/blueseph/amuse.svg?branch=master)](https://travis-ci.org/blueseph/amuse)
 
-a super simple super opinionated nodejs microservice-friendly restful api
+a super simple super opinionated nodejs microservice-friendly restful api.
+
+amuse supports node 8.x with the harmony flag
+
+`node --harmony index.js`
 
 ### npm install
 
-`npm install amuse`
+`npm install --save amuse`
 
 ### examples
 
@@ -137,8 +141,6 @@ app.listen(3000);
 ```
 
 ### notes
-amuse supports node 8 with the harmony flag only.
-
 you might have to add your own flavor of database connection - postgres, maria, sqlserver. just npm install it.
 
 please don't use this in production yet. thanks a bunch
