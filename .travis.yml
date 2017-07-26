@@ -1,6 +1,6 @@
 language: node_js
 sudo: required
-node_js: 7.5
+node_js: 8.2
 install: npm install
 before_script: npm install -g codeclimate-test-reporter
 script:
