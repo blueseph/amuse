@@ -90,6 +90,50 @@ app.resources.rooms.middlewares.add(roomMiddleware);
     {}
 */
 app.listen(3000);
+
+/* the standard amuse response object is as follows
+{
+  "success": true,
+  "errors": null,
+  "data": [
+      {
+          "id": 2,
+          "owner_id": 5,
+          "description": "hello!",
+          "created": "2017-07-25T07:00:00.000Z"
+      },
+      {
+          "id": 3,
+          "owner_id": 5,
+          "description": "hello!!!",
+          "created": "2017-07-25T07:00:00.000Z"
+      },
+      {
+          "id": 4,
+          "owner_id": 5,
+          "description": "hello!!!!!!",
+          "created": "2017-07-25T07:00:00.000Z"
+      }
+  ]
+}
+*/
+
+/* amuse also handles errors in a similar way
+{
+    "success": false,
+    "errors": [
+        {
+            "owner_id": [
+                "Object did not pass validation for property owner_id"
+            ],
+            "description": [
+                "Descriptions must be at least five characters long"
+            ]
+        }
+    ],
+    "data": null
+}
+*/
 ```
 
 ### notes
