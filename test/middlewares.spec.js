@@ -1,9 +1,8 @@
 const expect = require('chai').expect;
-const sinon = require('sinon');
 
 const Middlewares = require('../src/framework/middlewares/middlewares');
 
-describe('middlewares', function() {
+describe('middlewares', () => {
   let middlewares;
   let add;
   let getMiddlewares;

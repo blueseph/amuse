@@ -1,4 +1,4 @@
-/*  eslint no-param-reassign: ["error", { "props": false }]*/
+/*  eslint no-param-reassign: ["error", { "props": false }] */
 
 const middleware = validator => async (ctx, next) => {
   const result = validator.validate(ctx.request.body);
@@ -7,7 +7,7 @@ const middleware = validator => async (ctx, next) => {
     await next();
   } else {
     ctx.response.status = 400;
-    ctx.body = { result };
+    ctx.body = result;
   }
 };
 

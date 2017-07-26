@@ -5,13 +5,13 @@ const service = (Model) => {
   const fetch = async id => Model.where('id', id).fetch();
 
   const create = async (model) => {
-    const createdModel = Object.assign({}, model, { created: new Date() });
-    return new Model(createdModel).save();
+    const created = { ...model, created: new Date() };
+    return new Model(created).save();
   };
 
   const update = async (model) => {
-    const updatedModel = Object.assign({}, model, { updated: new Date() });
-    return new Model(updatedModel).save();
+    const updated = { ...model, updated: new Date() };
+    return new Model(updated).save();
   };
 
   const remove = async (id) => {

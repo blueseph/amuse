@@ -5,5 +5,10 @@
             2,
             "windows",
         ]
+    },
+    "env": {
+      "browser": true,
+      "node": true,
+      "jasmine": true,
     }
 }

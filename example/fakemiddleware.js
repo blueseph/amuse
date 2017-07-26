@@ -1,1 +1,1 @@
-module.exports = async next => next();
+module.exports = async (ctx, next) => next();
