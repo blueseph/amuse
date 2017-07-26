@@ -137,7 +137,7 @@ app.listen(3000);
 ```
 
 ### notes
-amuse is built on koa@2, so you'll have to use the --harmony-async-await until async/await hits v8 natively.
+amuse supports node 8 with the harmony flag only.
 
 you might have to add your own flavor of database connection - postgres, maria, sqlserver. just npm install it.
 
