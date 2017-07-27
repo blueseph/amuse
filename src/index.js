@@ -16,11 +16,10 @@ const amuse = () => {
       throw new Error('Missing tableName in options');
     }
 
-    resources[options.tableName] = Object.assign(
-      {},
-      resources,
-      component(db.resource(options)) // eslint-disable-line comma-dangle
-    );
+    resources[options.tableName] = {
+      ...resources,
+      ...component(db.resource(options)),
+    };
   };
 
   const listen = (port) => {

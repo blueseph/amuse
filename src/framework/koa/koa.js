@@ -11,12 +11,12 @@ const handler = () => {
 
   const setupResources = (resources) => {
     const resourceMiddleware = middlewares.getMiddlewares();
-    Object.keys(resources).forEach((resource) => {
-      router.get(`/${resource}`, ...resourceMiddleware, resources[resource].middleware.service.fetchAll);
-      router.get(`/${resource}/:id`, ...resourceMiddleware, resources[resource].middleware.service.fetch);
-      router.post(`/${resource}`, ...resourceMiddleware, resources[resource].middleware.validator, resources[resource].middleware.service.create);
-      router.put(`/${resource}/:id`, ...resourceMiddleware, resources[resource].middleware.validator, resources[resource].middleware.service.update);
-      router.del(`/${resource}/:id`, ...resourceMiddleware, resources[resource].middleware.service.remove);
+    Object.entries(resources).forEach(([resource, component]) => {
+      router.get(`/${resource}`, ...resourceMiddleware, component.middleware.service.fetchAll);
+      router.get(`/${resource}/:id`, ...resourceMiddleware, component.middleware.service.fetch);
+      router.post(`/${resource}`, ...resourceMiddleware, component.middleware.validator, component.middleware.service.create);
+      router.put(`/${resource}/:id`, ...resourceMiddleware, component.middleware.validator, component.middleware.service.update);
+      router.del(`/${resource}/:id`, ...resourceMiddleware, component.middleware.service.remove);
     });
   };
 

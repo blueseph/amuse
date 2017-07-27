@@ -16,22 +16,22 @@ const validation = () => {
 
   const validate = (obj) => {
     const validationObject = responseObject();
-    let errors = {};
+    let error = {};
 
     tests.forEach(({ property, test, customErr }) => {
       if (!test(obj)) {
-        errors = {
-          ...errors,
+        error = {
+          ...error,
           [property]: [
-            ...errors[property] || [],
+            ...error[property] || [],
             customErr || `Object did not pass validation for property ${property}`,
           ],
         };
       }
     });
 
-    if (Object.keys(errors).length) {
-      validationObject.addError(errors);
+    if (Object.keys(error).length) {
+      validationObject.addError(error);
     }
 
     return validationObject.get();
