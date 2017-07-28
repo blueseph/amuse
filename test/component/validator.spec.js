@@ -79,6 +79,7 @@ describe('validator', () => {
     let validateSecond;
     let validateThird;
     let invalidValidate;
+    let throwingValidate;
 
     beforeEach(() => {
       objectToValidate = { first: true, second: false, third: null };
@@ -128,7 +129,7 @@ describe('validator', () => {
     it('should properly handle a function that throws and error', () => {
       validates('fifth', throwingValidate);
 
-      const result = validate(objectToValidate);
+      const result = validate(throwingValidate);
 
       expect(validate.bind(objectToValidate)).not.to.throw();
       expect(result.success).to.be.false;
