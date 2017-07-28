@@ -74,11 +74,11 @@ describe('validator', () => {
   });
 
   describe('validate', () => {
-    let objectToValidate,
-      validateFirst,
-      validateSecond,
-      validateThird,
-      invalidValidate;
+    let objectToValidate;
+    let validateFirst;
+    let validateSecond;
+    let validateThird;
+    let invalidValidate;
 
     beforeEach(() => {
       objectToValidate = { first: true, second: false, third: null };
@@ -88,6 +88,7 @@ describe('validator', () => {
       validateThird = obj => obj.third === null;
 
       invalidValidate = obj => obj.fourth;
+      throwingValidate = obj => obj.fifth.length > 5;
     });
 
     it('should validate the first', () => {
@@ -123,5 +124,14 @@ describe('validator', () => {
       expect(result.errors.length).to.equal(1);
       expect(result.errors[0].fourth[0].includes('pass validation')).to.be.true;
     });
+
+    it('should properly handle a function that throws and error', () => {
+      validates('fifth', throwingValidate);
+
+      const result = validate(objectToValidate);
+
+      expect(validate.bind(objectToValidate)).not.to.throw();
+      expect(result.success).to.be.false;
+    })
   });
 });
