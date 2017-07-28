@@ -19,7 +19,16 @@ const validation = () => {
     let error = {};
 
     tests.forEach(({ property, test, customErr }) => {
-      if (!test(obj)) {
+      let failed = false;
+      try {
+        if (!test(obj)) {
+          failed = true;
+        }
+      } catch (ex) {
+        failed = true;
+      }
+
+      if (failed) {
         error = {
           ...error,
           [property]: [
