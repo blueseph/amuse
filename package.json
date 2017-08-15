@@ -4,11 +4,11 @@
   "description": "restful framework for creating microservice-friendly resources",
   "main": "src/index.js",
   "scripts": {
-    "example": "node --harmony example/start.js",
+    "example": "node example/start.js",
     "lint": "./node_modules/.bin/eslint src/**/*.js",
     "fix": "./node_modules/.bin/eslint src/**/*.js --fix",
-    "test": "node --harmony node_modules/istanbul/lib/cli cover node_modules/mocha/bin/_mocha -- --recursive",
-    "start": "node --harmony src/index.js"
+    "test": "node node_modules/istanbul/lib/cli cover node_modules/mocha/bin/_mocha -- --recursive",
+    "start": "node src/index.js"
   },
   "repository": {
     "type": "git",
