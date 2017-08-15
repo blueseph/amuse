@@ -1,7 +1,7 @@
 # amuse (ah mooz)
 [![Build Status](https://travis-ci.org/blueseph/amuse.svg?branch=master)](https://travis-ci.org/blueseph/amuse)
 
-a super simple super opinionated nodejs microservice-friendly restful api.
+a simple, flexible microservice library.
 
 amuse supports node 8.x with the harmony flag
 
@@ -102,19 +102,19 @@ app.listen(3000);
   "data": [
       {
           "id": 2,
-          "owner_id": 5,
+          "owner": 5,
           "description": "hello!",
           "created": "2017-07-25T07:00:00.000Z"
       },
       {
           "id": 3,
-          "owner_id": 5,
+          "owner": 5,
           "description": "hello!!!",
           "created": "2017-07-25T07:00:00.000Z"
       },
       {
           "id": 4,
-          "owner_id": 5,
+          "owner": 5,
           "description": "hello!!!!!!",
           "created": "2017-07-25T07:00:00.000Z"
       }
@@ -127,8 +127,8 @@ app.listen(3000);
     "success": false,
     "errors": [
         {
-            "owner_id": [
-                "Object did not pass validation for property owner_id"
+            "owner": [
+                "Object did not pass validation for property owner"
             ],
             "description": [
                 "Descriptions must be at least five characters long"
